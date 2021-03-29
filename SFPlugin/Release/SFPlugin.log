@@ -1,7 +1,0 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Platforms\Win32\PlatformToolsets\v141_xp\Toolset.targets(39,5): warning MSB8051: поддержка Windows XP прекращена, ее не будет в последующих выпусках Visual Studio. Дополнительные сведения: https://go.microsoft.com/fwlink/?linkid=2023588.
-C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: каталог Output заканчивается не косой чертой.  Этот экземпляр сборки добавит косую черту, поскольку она необходима для правильного определения каталога Output.
-  main.cpp
-c:\users\anonim\desktop\sf plugin template\sfplugin\appfunc.h(24): warning C4244: =: преобразование "float" в "int", возможна потеря данных
-c:\users\anonim\desktop\sf plugin template\sfplugin\appfunc.h(25): warning C4244: =: преобразование "float" в "int", возможна потеря данных
-c:\users\anonim\desktop\sf plugin template\sfplugin\main.cpp(28): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  SFPlugin.vcxproj -> D:\GTA San Andreas\SAMPFUNCS\SFPlugin.sf
