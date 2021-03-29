@@ -14,12 +14,11 @@ bool isDamaged = false;
 int startDamage;
 int randomNumberX = 0;
 int randomNumberY = 0;
-GiveAndTakeDMG GATDMG;
 
 bool CALLBACK Present(CONST RECT *pSourceRect, CONST RECT *pDestRect, HWND hDestWindowOverride,
 	CONST RGNDATA *pDirtyRegion)
 {
-	if (SUCCEEDED(SF->getRender()->BeginRender())) // åñëè ðåíäåðåð ãîòîâ ê ðèñîâàíèþ
+	if (SUCCEEDED(SF->getRender()->BeginRender())) // Ã¥Ã±Ã«Ã¨ Ã°Ã¥Ã­Ã¤Ã¥Ã°Ã¥Ã° Ã£Ã®Ã²Ã®Ã¢ Ãª Ã°Ã¨Ã±Ã®Ã¢Ã Ã­Ã¨Ã¾
 	{
 		GetLocalTime(&st);
 		srand(st.wMilliseconds);
@@ -44,13 +43,13 @@ bool CALLBACK Present(CONST RECT *pSourceRect, CONST RECT *pDestRect, HWND hDest
 		}
 		
 		//SF->getRender()->DrawPolygon(crosshairPosX, crosshairPosY, 5, 5, 0, 50, D3DCOLOR_ARGB(255, 255, 255, 0));
-		SF->getRender()->EndRender(); // çàâåðøàåì ðèñîâàíèå
+		SF->getRender()->EndRender(); // Ã§Ã Ã¢Ã¥Ã°Ã¸Ã Ã¥Ã¬ Ã°Ã¨Ã±Ã®Ã¢Ã Ã­Ã¨Ã¥
 	};
 
-	return true; // âîçâðàùàåì ïîëîæèòåëüíûé ðåçóëüòàò
+	return true; // Ã¢Ã®Ã§Ã¢Ã°Ã Ã¹Ã Ã¥Ã¬ Ã¯Ã®Ã«Ã®Ã¦Ã¨Ã²Ã¥Ã«Ã¼Ã­Ã»Ã© Ã°Ã¥Ã§Ã³Ã«Ã¼Ã²Ã Ã²
 };
 
-bool CALLBACK outcomingData(stRakNetHookParams *params) // îïðåäåëåíèå callback-ôóíêöèè, êîòîðàÿ áóäåò âûçâàíà ïðè îòïðàâêå êàêîãî ëèáî ïàêåòà
+bool CALLBACK outcomingData(stRakNetHookParams *params) // Ã®Ã¯Ã°Ã¥Ã¤Ã¥Ã«Ã¥Ã­Ã¨Ã¥ callback-Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¨, ÃªÃ®Ã²Ã®Ã°Ã Ã¿ Ã¡Ã³Ã¤Ã¥Ã² Ã¢Ã»Ã§Ã¢Ã Ã­Ã  Ã¯Ã°Ã¨ Ã®Ã²Ã¯Ã°Ã Ã¢ÃªÃ¥ ÃªÃ ÃªÃ®Ã£Ã® Ã«Ã¨Ã¡Ã® Ã¯Ã ÃªÃ¥Ã²Ã 
 {
 	if (params->packetId == 115) {
 
@@ -69,7 +68,7 @@ bool CALLBACK outcomingData(stRakNetHookParams *params) // îïðåäåëåíèå callback-
 		params->bitStream->ResetReadPointer();
 		
 	}
-	return true; // óñïåøíî çàâåðøàåì îòïðàâêó ïàêåòà
+	return true; // Ã³Ã±Ã¯Ã¥Ã¸Ã­Ã® Ã§Ã Ã¢Ã¥Ã°Ã¸Ã Ã¥Ã¬ Ã®Ã²Ã¯Ã°Ã Ã¢ÃªÃ³ Ã¯Ã ÃªÃ¥Ã²Ã 
 }; 
 
 void __stdcall mainloop()
@@ -84,19 +83,19 @@ void __stdcall mainloop()
 			whiteHitMarker = SF->getRender()->LoadTextureFromFile("SAMPFUNCS\\hitMarkers\\standartHitMarker.png");
 			redHitMarker = SF->getRender()->LoadTextureFromFile("SAMPFUNCS\\hitMarkers\\headHitMarker.png");
 			
-			SF->getRakNet()->registerRakNetCallback(RakNetScriptHookType::RAKHOOK_TYPE_OUTCOMING_RPC, outcomingData); // ðåãèñòðèðóåì RakNet callback
-			SF->getRender()->registerD3DCallback(eDirect3DDeviceMethods::D3DMETHOD_PRESENT, Present); // ðåãèñòðèðóåì D3D hook
+			SF->getRakNet()->registerRakNetCallback(RakNetScriptHookType::RAKHOOK_TYPE_OUTCOMING_RPC, outcomingData); // Ã°Ã¥Ã£Ã¨Ã±Ã²Ã°Ã¨Ã°Ã³Ã¥Ã¬ RakNet callback
+			SF->getRender()->registerD3DCallback(eDirect3DDeviceMethods::D3DMETHOD_PRESENT, Present); // Ã°Ã¥Ã£Ã¨Ã±Ã²Ã°Ã¨Ã°Ã³Ã¥Ã¬ D3D hook
 
-			// Ðåãèñòðàöèÿ âñåõ êîìàíä
+			// ÃÃ¥Ã£Ã¨Ã±Ã²Ã°Ã Ã¶Ã¨Ã¿ Ã¢Ã±Ã¥Ãµ ÃªÃ®Ã¬Ã Ã­Ã¤
 			SF->getSAMP()->registerChatCommand("changedelay", changeDelay); 
 			SF->getSAMP()->registerChatCommand("changesize", changeSize);
 			SF->getSAMP()->registerChatCommand("changerange", changeRange);
 			SF->getSAMP()->registerChatCommand("enablemarker", changeStatus);
 
 
-			SF->getSAMP()->getChat()->AddChatMessage(D3DCOLOR_XRGB(0xFF, 0xFF, 0xFF), "[{ff6666}H{f2e9cd}Marker{ffffff}] Óñïåøíî çàãðóæåí! Ðàçðàáîò÷èê: {cdd6f2}ANZR{ffffff} | ÂÊ: {cdd6f2}@pu1seanon");
+			SF->getSAMP()->getChat()->AddChatMessage(D3DCOLOR_XRGB(0xFF, 0xFF, 0xFF), "[{ff6666}H{f2e9cd}Marker{ffffff}] Ã“Ã±Ã¯Ã¥Ã¸Ã­Ã® Ã§Ã Ã£Ã°Ã³Ã¦Ã¥Ã­! ÃÃ Ã§Ã°Ã Ã¡Ã®Ã²Ã·Ã¨Ãª: {cdd6f2}ANZR{ffffff} | Ã‚ÃŠ: {cdd6f2}@pu1seanon");
 			if (!FileIsExist(filename)) {
-				SF->getSAMP()->getChat()->AddChatMessage(D3DCOLOR_XRGB(0xFF, 0xFF, 0xFF), "[{ff6666}H{f2e9cd}Marker{ffffff}] Ôàéëû êîíôèãóðàöèè {b8fcff}íå íàéäåíû{ffffff}! Çàãðóæàåì ñòàíäàðòíûå íàñòðîéêè...");
+				SF->getSAMP()->getChat()->AddChatMessage(D3DCOLOR_XRGB(0xFF, 0xFF, 0xFF), "[{ff6666}H{f2e9cd}Marker{ffffff}] Ã”Ã Ã©Ã«Ã» ÃªÃ®Ã­Ã´Ã¨Ã£Ã³Ã°Ã Ã¶Ã¨Ã¨ {b8fcff}Ã­Ã¥ Ã­Ã Ã©Ã¤Ã¥Ã­Ã»{ffffff}! Ã‡Ã Ã£Ã°Ã³Ã¦Ã Ã¥Ã¬ Ã±Ã²Ã Ã­Ã¤Ã Ã°Ã²Ã­Ã»Ã¥ Ã­Ã Ã±Ã²Ã°Ã®Ã©ÃªÃ¨...");
 			}
 			else {
 				char buf[6];
